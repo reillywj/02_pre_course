@@ -1,0 +1,77 @@
+An Incredibly Brief Introduction to Relational DBs by oreilly.com
+
+Building a complex Rails app really demands at least a basic understanding of how
+relational databases work.
+
+=====Tables of Data=====
+Each table is a set of sets.
+Within a single table, all of these sets have the same data structure: list of named fields and their values
+Similar to a spreadsheet, but the structure of a DB offer much less flexibility,
+but in return can offer tremendous power because of the obsession with ordered data
+-Every row has to have the same structure
+-Calculations generally take place outside of the tables, not in them
+-Tables just contain data
+
+DB Defined with a schema
+Field Name      | Data Type
+id              | :integer
+given_name      | :string
+middle_name     | :string
+family_name     | :string
+date_of_birth   | :date
+gpa             | :float
+start_date      | :date
+
+Rails is not very interested in the details of db schema and takes the terse and simple approach
+
+Rails supports the following data types:
+-:string
+-:text
+-:integer
+-:float
+-:decimal
+-:datetime
+-:timestamp
+-:timestamp
+-:date
+-:binary
+-:boolean
+
+---Table Limitations---
+-pictures or xml files tend to be placed in the filesystem somewhere
+-If little of the info fits neatly into tables, may want to go looking for other kinds of tools
+
+=====Connecting Tables=====
+-Singular tables are very constraining
+-Store different topics in different tables
+-Connect with keys (foreign key)
+-Can link tables to tables to tables
+
+=====Using Tables to Connect Tables=====
+-classic many-to-many relationship is students and classes (each student has many classes and each class has many students)
+-Use a middle table (called a join table) to relate two tables
+-Note: never name a table class in Rails, class is a protected name
+
+---Granularity---
+-Link through keys
+-data granularity
+-"normalization": much of it is about reducing duplication, which is usually best done by breaking data into multiple tables
+-Another key part of normalization is deciding how small (or large) each field in a table should be
+-Granulatiry: like for addresses: might make sense if you're only using for mailing to keep the street address in one field rather
+than separating house number from street number
+
+Problems arise when you realize you really did need to sort a list of addresses by street
+Splitting existing data into smaller pieces can be extremely annoying
+At first, you may want to err on the side of smaller pieces, as it's easier to recombine separate fields than to split them up
+Note: Rails makes combining fragmented fields easier with 'composed_of' method
+
+=====Databases, Tables and Rails=====
+
+
+
+
+
+
+
+
+
